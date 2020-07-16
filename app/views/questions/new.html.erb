@@ -7,6 +7,27 @@
         <%= f.text_field :quiz , class: "form-control" %>
       </div>
       
+      <div class="correct form-row align-items-center mb-3 mx-auto col-sm-6">
+        <%= f.label :正解 , class: "mr-2"%>
+        <%= f.text_field :correct , class: "form-control" %>
+      </div>
+
+      <%= f.fields_for :choices do |c| %>
+        <div class="choices form-row align-items-center mb-3 mx-auto col-sm-6">
+          <%= c.label :選択肢a , class: "mr-2"%>
+          <%= c.text_field :choice_a , class: "form-control" %>
+        
+          <%= c.label :選択肢b , class: "mr-2"%>
+          <%= c.text_field :choice_b , class: "form-control" %>
+        
+          <%= c.label :選択肢c , class: "mr-2"%>
+          <%= c.text_field :choice_c , class: "form-control" %>
+        
+          <%= c.label :選択肢d , class: "mr-2"%>
+          <%= c.text_field :choice_d , class: "form-control" %>
+        </div>
+      <% end %>
+      
       <div class="explain_sentence form-row align-items-center mb-3 mx-auto col-sm-6">
         <%= f.label :解説 , class: "mr-2"%>
         <%= f.text_field :explain_sentence , class: "form-control" %>

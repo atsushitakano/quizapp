@@ -10,13 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_013630) do
+ActiveRecord::Schema.define(version: 2020_07_16_081156) do
+
+  create_table "choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "question_id"
+    t.string "choice_a"
+    t.string "choice_b"
+    t.string "choice_c"
+    t.string "choice_d"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_choices_on_question_id"
+  end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.text "quiz"
-    t.text "explain_sentence"
+    t.string "quiz", null: false
+    t.string "correct", null: false
+    t.text "explain_sentence", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "choices", "questions"
 end
